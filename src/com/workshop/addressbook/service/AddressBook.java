@@ -48,4 +48,52 @@ public class AddressBook {
 			System.out.println(person.toString());
 		}
 	}
+	
+	// Building edit contact feature
+		public void editContact() {
+			System.out.println("\nEnter first name to edit :- ");
+			String first_name = input.next();
+			
+			for (Contact person : contacts) {
+				if (first_name.equalsIgnoreCase(person.getFirst_name())) {
+					
+					System.out.print("Enter new first name :- ");
+					String newFirstName = input.next();
+					person.setFirst_name(newFirstName);
+					
+					System.out.print("Enter new last name :- ");
+					String newLastName = input.next();
+					person.setLast_name(newLastName);
+					
+					System.out.print("Enter new Address :- ");
+					String newAddress = input.next();
+					person.setAddress(newAddress);
+					
+					System.out.print("Enter new city name :- ");
+					String newCity = input.next();
+					person.setCity(newCity);
+					
+					System.out.print("Enter new state name :- ");
+					String newState = input.next();
+					person.setState(newState);
+					
+					System.out.print("Enter new Zip code :- ");
+					int newZip = input.nextInt();
+					person.setZip_code(newZip);
+					
+					System.out.print("Enter new phonr number :- ");
+					long newPhone = input.nextLong();
+					person.setPhone_number(newPhone);
+					
+					System.out.print("Enter new email :- ");
+					String newEmail = input.next();
+					person.setEmail(newEmail);
+					
+					System.out.println("Contact edited Successfully.");
+				}
+				else {
+					continue;
+				}
+			}
+		}
 }

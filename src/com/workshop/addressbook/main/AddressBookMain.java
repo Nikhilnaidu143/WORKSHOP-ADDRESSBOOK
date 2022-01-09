@@ -13,5 +13,8 @@ public class AddressBookMain {
 		
 		addressBook.addContact();
 		addressBook.displayContacts();
+		
+		addressBook.editContact();
+		addressBook.displayContacts();
 	}
 }
