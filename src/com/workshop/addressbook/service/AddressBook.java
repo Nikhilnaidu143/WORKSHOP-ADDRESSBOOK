@@ -115,4 +115,13 @@ public class AddressBook {
 				}
 			}
 		}
+		
+		// adding multiple person details feature added.
+		public void addMultiplePersons() {
+			System.out.println("Enter how many contacts you want to add :- ");
+			int userWant = input.nextInt();
+			for (int i = 1; i <= userWant; i++) {
+				addContact();
+			}
+		}
 }

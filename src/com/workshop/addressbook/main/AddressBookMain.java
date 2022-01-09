@@ -29,7 +29,7 @@ public class AddressBookMain {
 
 					switch (userChoice) {
 					case 1:
-						obj.addContact();;
+						obj.addMultiplePersons();
 						break;
 					case 2:
 						obj.editContact();
