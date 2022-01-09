@@ -88,6 +88,6 @@ public class Contact {
 		return String.format("\nFirst_name :- " + first_name + "\n" + "Last_name :- " + last_name + "\n"
 				+ "Address :- " + address + "\n" + "City :- " + city + "\n" + "State :- " + state + "\n"
 				+ "Zip-code :- " + zip_code + "\n" + "Phone-number :- " + phone_number + "\n" + "Email :- "
-				+ email + "\n\n");
+				+ email + "\n");
 	}
 }

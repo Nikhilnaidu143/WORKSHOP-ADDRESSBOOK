@@ -90,8 +90,27 @@ public class AddressBook {
 					person.setEmail(newEmail);
 					
 					System.out.println("Contact edited Successfully.");
+					break;
 				}
 				else {
+					continue;
+				}
+			}
+		}
+		
+		// adding deleting contact by name feature
+		public void deleteContact() {
+			System.out.print("Enter first name to delete contact:- ");
+			String deleteByName = input.next();
+
+			for (int i = 0; i < contacts.size(); i++) {
+				String Finding_indexOfName = contacts.get(i).getFirst_name();
+
+				if (deleteByName.equals(Finding_indexOfName)) {
+					contacts.remove(i);
+					System.out.println("\nSelected contact deleted successfully.");
+					break;
+				} else {
 					continue;
 				}
 			}
