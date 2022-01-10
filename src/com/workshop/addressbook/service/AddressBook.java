@@ -329,4 +329,31 @@ public class AddressBook {
 			}
 			System.out.println("\nNumber of persons in same state " + "(" + countState + ") :- " + count + ".\n");
 		}
+		
+		/***
+		 * UC-11 :- Ability to sort the entries in the address book alphabetically by
+		 * Persons name.
+		 ***/
+		public void sortByName() {
+			//AddressBookList addressBook = findAddressBook();
+			if(addressBook.isEmpty()) {
+				System.out.println("Please create an address book first.");
+			}
+			else {
+				System.out.println("Please enter the name of the address book :- ");
+				String getAddressBook = input.next();
+				
+				for (AddressBookList addressBook : addressBook) {
+					if(getAddressBook.equals(addressBook.userInputBookName)) {
+						addressBook.contacts.stream()
+						.sorted((contact1 , contact2) -> contact1.getFirst_name()
+						.compareTo(contact2.getFirst_name()))
+						.forEach(contacts -> System.out.println(contacts));
+					}
+					else {
+						continue;
+					}
+				}
+			}
+		}
 }
