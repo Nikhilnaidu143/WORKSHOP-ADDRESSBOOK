@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.workshop.addressbook.service.AddressBook;
+import com.workshop.addressbook.service.FileOperations;
 
 public class AddressBookMain {
 
@@ -11,6 +12,8 @@ public class AddressBookMain {
 		public static void main(String[] args) throws IOException {
 			System.out.println("--------------------Welcome To Address Book Program-----------------------");
 			AddressBook obj = new AddressBook();
+			FileOperations fileObj = new FileOperations();
+			
 			Scanner input = new Scanner(System.in);
 			
 			System.out.print("Enter valid option to perform Address Book Application[1.Enter (or) 2.Exit] :- ");
@@ -30,7 +33,9 @@ public class AddressBookMain {
 					System.out.println("10.Count persons by city.");
 					System.out.println("11.Count persons by state.");
 					System.out.println("12.Sort by name/city/state/zip.");
-					System.out.println("13.Exit.");
+					System.out.println("13.Write into text file.");
+					System.out.println("14.Read from text file.");
+					System.out.println("15.Exit.");
 
 					System.out.println("\nEnter your choice :- ");
 					int userChoice = input.nextInt();
@@ -72,10 +77,16 @@ public class AddressBookMain {
 					case 12:
 						obj.sortByNameCityStateZip();
 						break;
+					case 13:
+						fileObj.writeContactsIntoTextFile();
+						break;
+					case 14:
+						fileObj.readContactsFromTextFile();
+						break;
 					default:
 						System.out.println("Enter valid choice from the list...");
 					}
-					if (userChoice == 13) {
+					if (userChoice == 15) {
 						System.out.println("Successfully exited from the Address Book Application.");
 						break;
 					}

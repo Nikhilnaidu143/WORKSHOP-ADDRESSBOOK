@@ -1,0 +1,30 @@
+[Address Book name :- ADDRESS-BOOK-1
+Contacts :- [
+First_name :- Nikhil
+Last_name :- Sundarasetty
+Address :- Pellur
+City :- Ongole
+State :- AP
+Zip-code :- 523272
+Phone-number :- 9398359637
+Email :- nikhilnaidu473@gmail.com
+, 
+First_name :- Bill
+Last_name :- Gates
+Address :- New-York
+City :- New-York
+State :- USA
+Zip-code :- 400008
+Phone-number :- 1333555566
+Email :- bill-gates@gmail.com
+], Address Book name :- ADDRESS-BOOK-2
+Contacts :- [
+First_name :- Elon
+Last_name :- Musk
+Address :- Star-Base
+City :- New-York
+State :- USA
+Zip-code :- 400009
+Phone-number :- 1335557778
+Email :- elon-musk@gmail.com
+]]
