@@ -15,345 +15,368 @@ public class AddressBook {
 
 	/** Adding contacts **/
 	public void addContact() {
-		
+
 		if (addressBook.isEmpty()) {
 			System.out.println("\nPlease add Address book to add contacts.");
 			return;
 		} else {
 			System.out.println("Enter address book name in which you want to add contacts :- ");
 			String enter = input.next();
-			
+
 			System.out.print("Enter First Name:- ");
 			String first_name = input.next();
-	
+
 			System.out.print("Enter Last Name:- ");
 			String last_name = input.next();
-	
+
 			System.out.print("Enter Address:- ");
 			String address = input.next();
-	
+
 			System.out.print("Enter City:- ");
 			String city = input.next();
-	
+
 			System.out.print("Enter State:- ");
 			String state = input.next();
-	
+
 			System.out.print("Enter Zip Code:- ");
 			int zip_code = input.nextInt();
-	
+
 			System.out.print("Enter Phone Number:- ");
 			long phone_number = input.nextLong();
-	
+
 			System.out.print("Enter E-mail:- ");
 			String email = input.next();
-	
+
 			Contact contact = new Contact(first_name, last_name, address, city, state, zip_code, phone_number, email);
-			
-			if (duplicateCheck(enter , first_name)) {
+
+			if (duplicateCheck(enter, first_name)) {
 				addressBook.stream().filter(find -> find.userInputBookName.contains(enter))
 						.forEach(addressBook -> addressBook.contacts.add(contact));
-	
+
 				System.out.println("\nContact added Successfully.\n");
-			}
-			else {
+			} else {
 				System.out.println("\nYou have already this person in your contact list.\n");
 				return;
 			}
 		}
 	}
-	
+
 	/**
 	 * UC-7:- Ability to ensure there is no Duplicate Entry of the same Person in a
 	 * particular Address Book.
 	 **/
-	public boolean duplicateCheck(String enter , String first_name) {
+	public boolean duplicateCheck(String enter, String first_name) {
 		for (AddressBookList addressBook : addressBook) {
 			if (enter.equals(addressBook.userInputBookName)) {
 				for (Contact person : addressBook.contacts) {
 					if (first_name.equals(person.getFirst_name())) {
 						return false;
-					}
-					else {
+					} else {
 						continue;
 					}
 				}
-			}
-			else {
+			} else {
 				continue;
 			}
 		}
 		return true;
 	}
-	
+
 	// Building edit contact feature
-		public void editContact() {
-			System.out.println("Enter address book name in which you want to edit contacts :- ");
-			String enter = input.next();
-			System.out.println("\nEnter first name to edit :- ");
-			String first_name = input.next();
-			
-			for (AddressBookList addressBook : addressBook) {
-				if (enter.equals(addressBook.userInputBookName)) {
-					for (Contact person : addressBook.contacts) {
-						if (first_name.equalsIgnoreCase(person.getFirst_name())) {
-							
-							System.out.print("Enter new first name :- ");
-							String newFirstName = input.next();
-							person.setFirst_name(newFirstName);
-							
-							System.out.print("Enter new last name :- ");
-							String newLastName = input.next();
-							person.setLast_name(newLastName);
-							
-							System.out.print("Enter new Address :- ");
-							String newAddress = input.next();
-							person.setAddress(newAddress);
-							
-							System.out.print("Enter new city name :- ");
-							String newCity = input.next();
-							person.setCity(newCity);
-							
-							System.out.print("Enter new state name :- ");
-							String newState = input.next();
-							person.setState(newState);
-							
-							System.out.print("Enter new Zip code :- ");
-							int newZip = input.nextInt();
-							person.setZip_code(newZip);
-							
-							System.out.print("Enter new phone number :- ");
-							long newPhone = input.nextLong();
-							person.setPhone_number(newPhone);
-							
-							System.out.print("Enter new email :- ");
-							String newEmail = input.next();
-							person.setEmail(newEmail);
-							
-							System.out.println("Contact edited Successfully.");
-							break;
-						}
-						else {
-							continue;
-						}
+	public void editContact() {
+		System.out.println("Enter address book name in which you want to edit contacts :- ");
+		String enter = input.next();
+		System.out.println("\nEnter first name to edit :- ");
+		String first_name = input.next();
+
+		for (AddressBookList addressBook : addressBook) {
+			if (enter.equals(addressBook.userInputBookName)) {
+				for (Contact person : addressBook.contacts) {
+					if (first_name.equalsIgnoreCase(person.getFirst_name())) {
+
+						System.out.print("Enter new first name :- ");
+						String newFirstName = input.next();
+						person.setFirst_name(newFirstName);
+
+						System.out.print("Enter new last name :- ");
+						String newLastName = input.next();
+						person.setLast_name(newLastName);
+
+						System.out.print("Enter new Address :- ");
+						String newAddress = input.next();
+						person.setAddress(newAddress);
+
+						System.out.print("Enter new city name :- ");
+						String newCity = input.next();
+						person.setCity(newCity);
+
+						System.out.print("Enter new state name :- ");
+						String newState = input.next();
+						person.setState(newState);
+
+						System.out.print("Enter new Zip code :- ");
+						int newZip = input.nextInt();
+						person.setZip_code(newZip);
+
+						System.out.print("Enter new phone number :- ");
+						long newPhone = input.nextLong();
+						person.setPhone_number(newPhone);
+
+						System.out.print("Enter new email :- ");
+						String newEmail = input.next();
+						person.setEmail(newEmail);
+
+						System.out.println("Contact edited Successfully.");
+						break;
+					} else {
+						continue;
 					}
 				}
-				else {
+			} else {
+				continue;
+			}
+		}
+	}
+
+	// adding deleting contact by name feature
+	public void deleteContact() {
+		System.out.println("Enter address book name in which you want to delete contacts :- ");
+		String enter = input.next();
+		System.out.print("Enter first name to delete contact:- ");
+		String deleteByName = input.next();
+
+		for (AddressBookList addressBook : addressBook) {
+			if (enter.equals(addressBook.userInputBookName)) {
+				for (Contact person : addressBook.contacts) {
+					if (deleteByName.equals(person.getFirst_name())) {
+						addressBook.contacts.remove(person);
+						System.out.println("\nSelected contact deleted successfully.");
+						break;
+					} else {
+						continue;
+					}
+				}
+			} else {
+				continue;
+			}
+		}
+	}
+
+	// adding multiple person details feature added.
+	public void addMultiplePersons() {
+		System.out.println("Enter how many contacts you want to add :- ");
+		int userWant = input.nextInt();
+		for (int i = 1; i <= userWant; i++) {
+			addContact();
+		}
+	}
+
+	// UC-6:- Ability to add multiple address books to system
+	public void newAddressBook() {
+
+		System.out.println("Enter Address Book Name :- ");
+		String userInputBookName = input.next();
+
+		if (!checkUnique(userInputBookName)) {
+			System.out.println("OOPS! You aleady have AddressBook with same name.\n");
+			return;
+		}
+
+		AddressBookList addressBookObj = new AddressBookList(userInputBookName);
+		addressBook.add(addressBookObj);
+
+		System.out.println("New Address Book Name is added to list.");
+	}
+
+	/*** Checking for unique address Book ***/
+	public boolean checkUnique(String userInputBookName) {
+		if (addressBook.isEmpty()) {
+			return true;
+		}
+		for (int i = 0; i < addressBook.size(); i++) {
+			String getName = addressBook.get(i).userInputBookName;
+			if (getName.equals(userInputBookName)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// display address book
+	public void displayAddressBook() {
+		for (AddressBookList addressBook : addressBook) {
+			System.out.println(addressBook);
+		}
+	}
+
+	/**
+	 * UC-8:- Ability to search Person in a City or State across the multiple
+	 * AddressBook.
+	 **/
+	public void searchPersonByCity() {
+
+		System.out.print("\nEnter city to search person by city name :- ");
+		String searchCity = input.next();
+
+		for (AddressBookList addressBook : addressBook) {
+			for (Contact person : addressBook.contacts) {
+				if (searchCity.equals(person.getCity())) {
+					System.out.println(
+							"Persons who are in same city " + "(" + searchCity + ") :- " + person.getFirst_name());
+				} else {
 					continue;
 				}
 			}
 		}
-		
-		// adding deleting contact by name feature
-		public void deleteContact() {
-			System.out.println("Enter address book name in which you want to delete contacts :- ");
-			String enter = input.next();
-			System.out.print("Enter first name to delete contact:- ");
-			String deleteByName = input.next();
+	}
+
+	public void searchPersonByState() {
+
+		System.out.print("\nEnter State to search person by city name :- ");
+		String searchState = input.next();
+
+		for (AddressBookList addressBook : addressBook) {
+			for (Contact person : addressBook.contacts) {
+				if (searchState.equals(person.getState())) {
+					System.out.println(
+							"Persons who are in same state " + "(" + searchState + ") :- " + person.getFirst_name());
+				} else {
+					continue;
+				}
+			}
+		}
+	}
+
+	/**
+	 * UC-9:- Ability to view Persons by City or State - Maintain Dictionary of City
+	 * and Person as well as State and Person.
+	 **/
+	public void viewPersonByCity() {
+
+		System.out.print("\nEnter city to view person by city name :- ");
+		String searchCity = input.next();
+
+		Dictionary cityWiseDict = new Hashtable();
+
+		for (AddressBookList addressBook : addressBook) {
+			for (Contact person : addressBook.contacts) {
+				if (searchCity.equals(person.getCity())) {
+					cityWiseDict.put(person, searchCity);
+				} else {
+					continue;
+				}
+			}
+		}
+		System.out.println("Persons who are in same city " + searchCity + " :- ");
+		for (Enumeration i = cityWiseDict.keys(); i.hasMoreElements();) {
+			System.out.println(i.nextElement());
+		}
+		System.out.println(" ");
+	}
+
+	public void viewPersonByState() {
+		System.out.print("\nEnter state to view person by State name :- ");
+		String searchState = input.next();
+
+		Dictionary stateWiseDict = new Hashtable();
+
+		for (AddressBookList addressBook : addressBook) {
+			for (Contact person : addressBook.contacts) {
+				if (searchState.equals(person.getState())) {
+					stateWiseDict.put(person, searchState);
+				} else {
+					continue;
+				}
+			}
+		}
+		System.out.println("Persons who are in same state " + searchState + " :- ");
+		for (Enumeration i = stateWiseDict.keys(); i.hasMoreElements();) {
+			System.out.println(i.nextElement());
+		}
+		System.out.println(" ");
+	}
+
+	/**
+	 * UC-10:- Ability to get number of contact persons i.e. count by City or State.
+	 **/
+	public void countByCity() {
+		System.out.println("Enter city name to count :- ");
+		String countCity = input.next();
+		int count = 0;
+		for (AddressBookList addressBook : addressBook) {
+			for (Contact person : addressBook.contacts) {
+				if (countCity.equals(person.getCity())) {
+					count++;
+				}
+			}
+		}
+		System.out.println("\nNumber of persons in same city " + "(" + countCity + ") :- " + count + ".\n");
+	}
+
+	public void countByState() {
+		System.out.println("Enter state name to count :- ");
+		String countState = input.next();
+		int count = 0;
+		for (AddressBookList addressBook : addressBook) {
+			for (Contact person : addressBook.contacts) {
+				if (countState.equals(person.getState())) {
+					count++;
+				}
+			}
+		}
+		System.out.println("\nNumber of persons in same state " + "(" + countState + ") :- " + count + ".\n");
+	}
+
+	/**
+	 * UC-12:- Ability to sort the entries in the address book by City, State, or
+	 * Zip.
+	 **/
+	public void sortByNameCityStateZip() {
+		if (addressBook.isEmpty()) {
+			System.out.println("Please create an address book first.");
+		} else {
+			System.out.println("Please enter the name of the address book :- ");
+			String getAddressBook = input.next();
 
 			for (AddressBookList addressBook : addressBook) {
-				if (enter.equals(addressBook.userInputBookName)) {
-					for (Contact person : addressBook.contacts) {
-						if (deleteByName.equals(person.getFirst_name())) {
-							addressBook.contacts.remove(person);
-							System.out.println("\nSelected contact deleted successfully.");
-							break;
-						} else {
-							continue;
-						}
+				if (getAddressBook.equals(addressBook.userInputBookName)) {
+
+					System.out.println("Please select any of the below options." + "\n" + "1. To Sort By Name." + "\n"
+							+ "2. To Sort By City." + "\n" + "3. To Sort By State." + "\n"
+							+ "4. To Sort By Zip Code. :- ");
+					int choice = input.nextInt();
+					switch (choice) {
+					case 1:
+						addressBook.contacts.stream().sorted(
+								(contact1, contact2) -> contact1.getFirst_name()
+								.compareTo(contact2.getFirst_name()))
+								.forEach(contact -> System.out.println(contact));
+						break;
+					case 2:
+						addressBook.contacts.stream()
+								.sorted((contact1, contact2) -> contact1.getCity()
+								.compareTo(contact2.getCity()))
+								.forEach(contact -> System.out.println(contact));
+						break;
+					case 3:
+						addressBook.contacts.stream()
+								.sorted((contact1, contact2) -> contact1.getState()
+								.compareTo(contact2.getState()))
+								.forEach(contact -> System.out.println(contact));
+						break;
+					case 4:
+						addressBook.contacts.stream()
+								.sorted((contact1, contact2) -> Integer.valueOf(contact1.getZip_code())
+								.compareTo(contact2.getZip_code()))
+								.forEach(contact -> System.out.println(contact));
+						break;
+					default:
+						System.out.println("Please choose valid option.");
 					}
 				} else {
 					continue;
 				}
 			}
 		}
-		
-		// adding multiple person details feature added.
-		public void addMultiplePersons() {
-			System.out.println("Enter how many contacts you want to add :- ");
-			int userWant = input.nextInt();
-			for (int i = 1; i <= userWant; i++) {
-				addContact();
-			}
-		}
-		
-		// UC-6:- Ability to add multiple address books to system
-		public void newAddressBook() {
-			
-			System.out.println("Enter Address Book Name :- ");
-			String userInputBookName = input.next();
-			
-			if(!checkUnique(userInputBookName)) {
-				System.out.println("OOPS! You aleady have AddressBook with same name.\n");
-				return;
-			}
-			
-			AddressBookList addressBookObj = new AddressBookList(userInputBookName);
-			addressBook.add(addressBookObj);
-
-			System.out.println("New Address Book Name is added to list.");
-		}
-
-		/*** Checking for unique address Book ***/
-		public boolean checkUnique(String userInputBookName) {
-			if(addressBook.isEmpty()) {
-				return true;
-			}
-			for(int i = 0; i < addressBook.size(); i++) {
-				String getName = addressBook.get(i).userInputBookName;
-				if(getName.equals(userInputBookName)) {
-					return false;
-				}
-			}
-			return true;
-		}
-		
-		// display address book
-		public void displayAddressBook() {
-			for (AddressBookList addressBook : addressBook) {
-				System.out.println(addressBook);
-			}
-		}
-		
-		/**
-		 * UC-8:- Ability to search Person in a City or State across the multiple
-		 * AddressBook.
-		 **/
-		public void searchPersonByCity() {
-			
-			System.out.print("\nEnter city to search person by city name :- ");
-			String searchCity = input.next();
-			
-			for (AddressBookList addressBook : addressBook) {
-				for (Contact person : addressBook.contacts) {
-					if (searchCity.equals(person.getCity())) {
-						System.out.println("Persons who are in same city " + "(" + searchCity + ") :- " + person.getFirst_name());
-					} else {
-						continue;
-					}
-				}
-			}
-		}
-		
-		public void searchPersonByState() {
-			
-			System.out.print("\nEnter State to search person by city name :- ");
-			String searchState = input.next();
-			
-			for (AddressBookList addressBook : addressBook) {
-				for (Contact person : addressBook.contacts) {
-					if (searchState.equals(person.getState())) {
-						System.out.println("Persons who are in same state " + "(" + searchState + ") :- " + person.getFirst_name());
-					} else {
-						continue;
-					}
-				}
-			}
-		}
-		
-		/**
-		 * UC-9:- Ability to view Persons by City or State - Maintain Dictionary of City
-		 * and Person as well as State and Person.
-		 **/
-		public void viewPersonByCity() {
-			
-			System.out.print("\nEnter city to view person by city name :- ");
-			String searchCity = input.next();
-			
-			Dictionary cityWiseDict = new Hashtable();
-
-			for (AddressBookList addressBook : addressBook) {
-				for (Contact person : addressBook.contacts) {
-					if (searchCity.equals(person.getCity())) {
-						cityWiseDict.put(person , searchCity);
-					} else {
-						continue;
-					}
-				}
-			}
-			System.out.println("Persons who are in same city " + searchCity + " :- ");
-			for(Enumeration i = cityWiseDict.keys(); i.hasMoreElements();) {
-				System.out.println(i.nextElement());
-			}
-			System.out.println(" ");
-		}
-		
-		public void viewPersonByState() {
-			System.out.print("\nEnter state to view person by State name :- ");
-			String searchState = input.next();
-			
-			Dictionary stateWiseDict = new Hashtable();
-
-			for (AddressBookList addressBook : addressBook) {
-				for (Contact person : addressBook.contacts) {
-					if (searchState.equals(person.getState())) {
-						stateWiseDict.put(person, searchState);
-					} else {
-						continue;
-					}
-				}
-			}
-			System.out.println("Persons who are in same state " + searchState + " :- ");
-			for(Enumeration i = stateWiseDict.keys(); i.hasMoreElements();) {
-				System.out.println(i.nextElement());
-			}
-			System.out.println(" ");
-		}
-		
-		/**
-		 * UC-10:- Ability to get number of contact persons i.e. count by City or State.
-		 **/
-		public void countByCity() {
-			System.out.println("Enter city name to count :- ");
-			String countCity = input.next();
-			int count = 0;
-			for (AddressBookList addressBook : addressBook) {
-				for (Contact person : addressBook.contacts) {
-					if(countCity.equals(person.getCity())) {
-						count++;
-					}
-				}
-			}
-			System.out.println("\nNumber of persons in same city " + "(" + countCity + ") :- " + count + ".\n");
-		}
-		
-		public void countByState() {
-			System.out.println("Enter state name to count :- ");
-			String countState = input.next();
-			int count = 0;
-			for (AddressBookList addressBook : addressBook) {
-				for (Contact person : addressBook.contacts) {
-					if(countState.equals(person.getState())) {
-						count++;
-					}
-				}
-			}
-			System.out.println("\nNumber of persons in same state " + "(" + countState + ") :- " + count + ".\n");
-		}
-		
-		/***
-		 * UC-11 :- Ability to sort the entries in the address book alphabetically by
-		 * Persons name.
-		 ***/
-		public void sortByName() {
-			//AddressBookList addressBook = findAddressBook();
-			if(addressBook.isEmpty()) {
-				System.out.println("Please create an address book first.");
-			}
-			else {
-				System.out.println("Please enter the name of the address book :- ");
-				String getAddressBook = input.next();
-				
-				for (AddressBookList addressBook : addressBook) {
-					if(getAddressBook.equals(addressBook.userInputBookName)) {
-						addressBook.contacts.stream()
-						.sorted((contact1 , contact2) -> contact1.getFirst_name()
-						.compareTo(contact2.getFirst_name()))
-						.forEach(contacts -> System.out.println(contacts));
-					}
-					else {
-						continue;
-					}
-				}
-			}
-		}
+	}
 }

@@ -29,7 +29,7 @@ public class AddressBookMain {
 					System.out.println("9.View contacts by state.");
 					System.out.println("10.Count persons by city.");
 					System.out.println("11.Count persons by state.");
-					System.out.println("12.Sort by name.");
+					System.out.println("12.Sort by name/city/state/zip.");
 					System.out.println("13.Exit.");
 
 					System.out.println("\nEnter your choice :- ");
@@ -70,7 +70,7 @@ public class AddressBookMain {
 						obj.countByState();
 						break;
 					case 12:
-						obj.sortByName();
+						obj.sortByNameCityStateZip();
 						break;
 					default:
 						System.out.println("Enter valid choice from the list...");
