@@ -1,6 +1,9 @@
 package com.workshop.addressbook.service;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 import com.workshop.addressbook.entity.AddressBookList;
@@ -245,5 +248,54 @@ public class AddressBook {
 					}
 				}
 			}
+		}
+		
+		/**
+		 * UC-9:- Ability to view Persons by City or State - Maintain Dictionary of City
+		 * and Person as well as State and Person.
+		 **/
+		public void viewPersonByCity() {
+			
+			System.out.print("\nEnter city to view person by city name :- ");
+			String searchCity = input.next();
+			
+			Dictionary cityWiseDict = new Hashtable();
+
+			for (AddressBookList addressBook : addressBook) {
+				for (Contact person : addressBook.contacts) {
+					if (searchCity.equals(person.getCity())) {
+						cityWiseDict.put(person , searchCity);
+					} else {
+						continue;
+					}
+				}
+			}
+			System.out.println("Persons who are in same city " + searchCity + " :- ");
+			for(Enumeration i = cityWiseDict.keys(); i.hasMoreElements();) {
+				System.out.println(i.nextElement());
+			}
+			System.out.println(" ");
+		}
+		
+		public void viewPersonByState() {
+			System.out.print("\nEnter state to view person by State name :- ");
+			String searchState = input.next();
+			
+			Dictionary stateWiseDict = new Hashtable();
+
+			for (AddressBookList addressBook : addressBook) {
+				for (Contact person : addressBook.contacts) {
+					if (searchState.equals(person.getState())) {
+						stateWiseDict.put(person, searchState);
+					} else {
+						continue;
+					}
+				}
+			}
+			System.out.println("Persons who are in same state " + searchState + " :- ");
+			for(Enumeration i = stateWiseDict.keys(); i.hasMoreElements();) {
+				System.out.println(i.nextElement());
+			}
+			System.out.println(" ");
 		}
 }
