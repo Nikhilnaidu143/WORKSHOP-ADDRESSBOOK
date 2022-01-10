@@ -210,4 +210,40 @@ public class AddressBook {
 				System.out.println(addressBook);
 			}
 		}
+		
+		/**
+		 * UC-8:- Ability to search Person in a City or State across the multiple
+		 * AddressBook.
+		 **/
+		public void searchPersonByCity() {
+			
+			System.out.print("\nEnter city to search person by city name :- ");
+			String searchCity = input.next();
+			
+			for (AddressBookList addressBook : addressBook) {
+				for (Contact person : addressBook.contacts) {
+					if (searchCity.equals(person.getCity())) {
+						System.out.println("Persons who are in same city " + "(" + searchCity + ") :- " + person.getFirst_name());
+					} else {
+						continue;
+					}
+				}
+			}
+		}
+		
+		public void searchPersonByState() {
+			
+			System.out.print("\nEnter State to search person by city name :- ");
+			String searchState = input.next();
+			
+			for (AddressBookList addressBook : addressBook) {
+				for (Contact person : addressBook.contacts) {
+					if (searchState.equals(person.getState())) {
+						System.out.println("Persons who are in same state " + "(" + searchState + ") :- " + person.getFirst_name());
+					} else {
+						continue;
+					}
+				}
+			}
+		}
 }
