@@ -1,0 +1,42 @@
+[
+  {
+    "userInputBookName": "ADDRESS-BOOK-1",
+    "contacts": [
+      {
+        "first_name": "Nikhil",
+        "last_name": "Sundarasetty",
+        "address": "Pellur",
+        "city": "Ongole",
+        "state": "AP",
+        "zip_code": 523272,
+        "phone_number": 9398359637,
+        "email": "nikhilnaidu473@gmail.com"
+      },
+      {
+        "first_name": "Bill",
+        "last_name": "Gates",
+        "address": "New-York",
+        "city": "New-York",
+        "state": "USA",
+        "zip_code": 400008,
+        "phone_number": 1233555588,
+        "email": "bill-gates@gmail.com"
+      }
+    ]
+  },
+  {
+    "userInputBookName": "ADDRESS-BOOK-2",
+    "contacts": [
+      {
+        "first_name": "Elon",
+        "last_name": "Musk",
+        "address": "Star-Base",
+        "city": "New-York",
+        "state": "USA",
+        "zip_code": 400009,
+        "phone_number": 1555566666,
+        "email": "elon-musk@gmail.com"
+      }
+    ]
+  }
+]
