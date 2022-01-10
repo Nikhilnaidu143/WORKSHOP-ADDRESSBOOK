@@ -50,8 +50,9 @@ public class AddressBook {
 			Contact contact = new Contact(first_name, last_name, address, city, state, zip_code, phone_number, email);
 
 			if (duplicateCheck(enter, first_name)) {
-				addressBook.stream().filter(find -> find.userInputBookName.contains(enter))
-						.forEach(addressBook -> addressBook.contacts.add(contact));
+				addressBook.stream()
+				.filter(find -> find.userInputBookName.equalsIgnoreCase(enter))
+				.forEach(addressBook -> addressBook.contacts.add(contact));
 
 				System.out.println("\nContact added Successfully.\n");
 			} else {

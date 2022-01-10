@@ -35,7 +35,9 @@ public class AddressBookMain {
 					System.out.println("12.Sort by name/city/state/zip.");
 					System.out.println("13.Write into text file.");
 					System.out.println("14.Read from text file.");
-					System.out.println("15.Exit.");
+					System.out.println("15.Write into CSV file.");
+					System.out.println("16.Read from CSV file.");
+					System.out.println("17.Exit.");
 
 					System.out.println("\nEnter your choice :- ");
 					int userChoice = input.nextInt();
@@ -83,10 +85,16 @@ public class AddressBookMain {
 					case 14:
 						fileObj.readContactsFromTextFile();
 						break;
+					case 15:
+						fileObj.writeContactsIntoCSV();
+						break;
+					case 16:
+						fileObj.readContactsFromCSV();
+						break;
 					default:
 						System.out.println("Enter valid choice from the list...");
 					}
-					if (userChoice == 15) {
+					if (userChoice == 17) {
 						System.out.println("Successfully exited from the Address Book Application.");
 						break;
 					}
