@@ -18,11 +18,12 @@ public class AddressBookMain {
 			if (enterExit == 1) {
 				while (enterExit != 2) {
 					System.out.println("Choose which operation you want to perform from below list :- ");
-					System.out.println("1.Add Contact.");
+					System.out.println("1.Add Contacts.");
 					System.out.println("2.Edit Contact");
 					System.out.println("3.Delete Contact.");
-					System.out.println("4.Display contact.");
-					System.out.println("5.Exit.");
+					System.out.println("4.Add Address Book.");
+					System.out.println("5.Display AddressBook.");
+					System.out.println("6.Exit.");
 
 					System.out.println("\nEnter your choice :- ");
 					int userChoice = input.nextInt();
@@ -38,12 +39,15 @@ public class AddressBookMain {
 						obj.deleteContact();
 						break;
 					case 4:
-						obj.displayContacts();
+						obj.newAddressBook();
+						break;
+					case 5:
+						obj.displayAddressBook();
 						break;
 					default:
 						System.out.println("Enter valid choice from the list...");
 					}
-					if (userChoice == 5) {
+					if (userChoice == 6) {
 						System.out.println("Successfully exited from the Address Book Application.");
 						break;
 					}
